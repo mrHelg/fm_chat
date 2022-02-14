@@ -2,7 +2,7 @@ const http = require('http');
 const SocketServer = require('socket.io');
 const app = require('./app');
 const {Message} = require('./models');
-const {SOCKET_EVENTS} = require('./config');
+const {port, SOCKET_EVENTS} = require('./config');
 
 const server = http.createServer(app);
 const io = SocketServer(server);
@@ -22,6 +22,6 @@ io.on('connection', socket=>{
   })
 })
 
-server.listen(3000, ()=>{
+server.listen(port, ()=>{
   console.log('server started')
 })
