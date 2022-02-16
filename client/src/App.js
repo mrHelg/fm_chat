@@ -15,8 +15,21 @@ function App() {
   }, []);
   return (
     <div>
+      <Formik
+        onSubmit={(values, formikBag) => {
+          formikBag.resetForm();
+        }}
+        initialValues={{ author: '', text: '' }}
+      >
+        <Form>
+          <Field>name='author' placeholder = 'author' /</Field>
+          <Field name="text" placeholder="text" />
+          <button type="submit">send</button>
+        </Form>
+      </Formik>
       <h2>List of messages</h2>
       <ul>
+        {isFeching && <li>load...</li>}
         {messages.map((msg) => (
           <li key={msg._id}>{msg.text}</li>
         ))}
