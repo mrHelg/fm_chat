@@ -11,17 +11,17 @@ export function chatReducer(state = initialState, action) {
   switch (action.type) {
     case ACTIONS.GET_MESSAGE_REQUEST:
     case ACTIONS.CREATE_MESSAGE_REQUEST: {
-      return produce((state, draftState) => {
+      return produce(state, (draftState) => {
         draftState.isFetching = true;
       });
     }
 
-    case ACTIONS.CREATE_MESSAGE_ERROR:
+    case ACTIONS.GET_MESSAGE_ERROR:
     case ACTIONS.CREATE_MESSAGE_ERROR: {
       const {
         payload: { error },
       } = action;
-      return produce((state, draftState) => {
+      return produce(state, (draftState) => {
         draftState.isFetching = false;
         draftState.error = error;
       });
@@ -31,7 +31,7 @@ export function chatReducer(state = initialState, action) {
       const {
         payload: { messages },
       } = action;
-      return produce((state, draftState) => {
+      return produce(state, (draftState) => {
         draftState.isFetching = false;
         draftState.messages.push(...messages);
       });
@@ -41,7 +41,7 @@ export function chatReducer(state = initialState, action) {
       const {
         payload: { message },
       } = action;
-      return produce((state, draftState) => {
+      return produce(state, (draftState) => {
         draftState.isFetching = false;
         draftState.messages.push(message);
       });

@@ -1,4 +1,4 @@
-import ACTIONS from './';
+import ACTIONS from '.';
 
 export const getMessageRequest = () => ({
   type:ACTIONS.GET_MESSAGE_REQUEST
